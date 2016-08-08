@@ -16,20 +16,21 @@
     "grunt-sass": "^1.0.0",
     "grunt-sass-lint": "^0.1.0",
     "grunt-symdiff": "0.0.1",
+    "jest-cli": "^14.1.0",
     "json-server": "^0.8.4",
     "symdiff-css": "0.0.3",
     "symdiff-html": "0.0.2",
     "symdiff-sass": "0.0.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/rachelober/magical-bedroom-products.git"
   },
   "author": "",
-  "license": "MIT-LICENSE",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rachelober/magical-bedroom-products/issues"
   },
