@@ -1,26 +1,26 @@
 const $ = require('jquery');
 const calculateCartTotal = require('./calculateCartTotal');
 const fetchCart = require('./fetchCart');
+const removeCartItem = require('./removeCartItem');
 const getCartCount = require('./getCartCount');
 
 $(document).ready(function() {
-  updateCartCount();
-  updateCartTotal();
+  var cart = []
+  fetchCart(cart => {
+    updateCartCount(getCartCount(cart));
+    console.log(getCartCount(cart));
+  });
+
 });
 
 $(".item__remove").click(function() {
   var item = $(this);
   var data_id = item.data("id");
   var parent_label = "cart-item-" + data_id;
-  var api = "http://localhost:3000/cart_order/" + data_id;
 
-  $.ajax({
-    url: api,
-    type: 'DELETE',
-    success: function(result) {
-      $("#cart-item-" + data_id).remove();
-      updateCartTotal();
-    }
+  removeCartItem(data_id, function() {
+    $("#cart-item-" + data_id).remove();
+    updateCartTotal();
   });
 });
 
@@ -43,9 +43,8 @@ $(".product__buy").click(function() {
   });
 });
 
-function updateCartCount() {
-  count = getCartCount();
-  $("#cart-count").text(count);
+function updateCartCount(num) {
+  $("#cart-count").text(num);
 }
 
 function updateCartTotal(ary) {

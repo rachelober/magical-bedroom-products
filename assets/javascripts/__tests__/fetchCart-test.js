@@ -33,11 +33,13 @@ describe('fetchCart', () => {
     $.ajax.mock.calls[0/*first call*/][0/*first argument*/].success({
       cart_order: [
         {
+          id: 1,
           name: "Never ending glass of Water",
           description: "Tired of running out of water when you sleep? This glass of water is always half-full. And it always stays clean and germ free!",
           price: "$2000"
         },
         {
+          id: 2,
           name: "Reusable Tissues",
           description: "Every good beside has a box of tissues. Never run out with reusable tissues. A must for all sleepers with allergies.",
           price: "$1500"
@@ -50,11 +52,13 @@ describe('fetchCart', () => {
     expect(callback.mock.calls[0/*first call*/][0/*first arg*/]).toEqual({
       cart_order: [
         {
+          id: 1,
           name: "Never ending glass of Water",
           description: "Tired of running out of water when you sleep? This glass of water is always half-full. And it always stays clean and germ free!",
           price: "$2000"
         },
         {
+          id: 2,
           name: "Reusable Tissues",
           description: "Every good beside has a box of tissues. Never run out with reusable tissues. A must for all sleepers with allergies.",
           price: "$1500"
