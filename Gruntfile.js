@@ -4,6 +4,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-symlink');
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-haml2html");
+  grunt.loadNpmTasks('grunt-nunjucks');
   grunt.loadNpmTasks("grunt-symdiff");
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-sass-lint');
@@ -32,6 +33,10 @@ module.exports = function (grunt) {
       haml: {
         files: "assets/**/*.haml",
         tasks: ["haml"]
+      },
+      nunjucks: {
+        files: "assets/views/*",
+        tasks: ["nunjucks"]
       }
     },
 
@@ -70,6 +75,20 @@ module.exports = function (grunt) {
       }
     },
 
+    nunjucks: {
+      precompile: {
+        baseDir: 'assets/views/',
+        src: 'assetsviews/*',
+        dest: 'build/javascripts/templates.js',
+        options: {
+          env: require('./nunjucks-environment'),
+          name: function(filename) {
+            return 'foo/' + filename;
+          }
+        }
+      }
+    },
+
     // Used to put version at top of javascript build
     pkg: grunt.file.readJSON('package.json'),
     // Javascript build task
@@ -101,6 +120,7 @@ module.exports = function (grunt) {
         },
         options: {
           browser: ["google chrome"],
+          port: 3001,
           watchTask: true,
           server: {
             baseDir: [
