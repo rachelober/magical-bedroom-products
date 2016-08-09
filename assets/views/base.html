@@ -14,26 +14,27 @@
     <![endif]-->
     <div class='content'>
       <div class='product-list'>
-        <div class='product'>
-          {% for product in products %}
+        {% for product in products %}
+          <div class='product'>
             <h2 class='product__name' itemprop='name'>
-              Ipsum
+              {{ product.name }}
             </h2>
             <p class='product__dek' itemprop='description'>
-              Product description.
+              {{ product.description }}
             </p>
             <div class='product__buy'>
               <div class='btn'>
                 Buy
               </div>
             </div>
-            </div>
-          {% else %}
+          </div>
+        {% else %}
+          <div class='product'>
             <h2 class='product__name' itemprop='name'>
               No products!
             </h2>
-          {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
       </div>
       <div class='cart'>
         <div class='cart__hed'>

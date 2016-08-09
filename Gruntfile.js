@@ -63,7 +63,7 @@ module.exports = function (grunt) {
     nunjucks_render: {
       options: {
         baseDir: 'assets/views/',
-        data: ['http://localhost:3000/products', 'http://localhost:3000/cart_order'],
+        data: 'data/db.json',
       },
       files: {
         src:  'assets/views/index.html',
