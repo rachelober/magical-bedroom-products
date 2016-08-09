@@ -13,18 +13,25 @@
     .content
       .product-list
         .product
-          %h2.product__name
+          %h2.product__name{itemprop: "name"}
             Ipsum
-          %p.product__dek
+          %p.product__dek{itemprop: "description"}
             Product description.
-          .product__price
-            $2.00
           .product__buy
             .btn
               Buy
+        .product
+          %h2.product__name{itemprop: "name"}
+            Ipsum
+          %p.product__dek{itemprop: "description"}
+            Product description.
+          .product__buy
+            .btn
+              Buy
+
       .cart
         .cart__hed
-          In your cart:
+          Cart
           %span.cart__count 2
         .cart-items
           .item
@@ -34,9 +41,18 @@
               $20
             .item__remove
               .btn
-                Remove
+                X
+          .item
+            .item__name
+              ipsum
+            .item__price
+              $20
+            .item__remove
+              .btn
+                X
         .cart__total
-          $1400
+          Total $1400
+
     %script{:src => "https://code.jquery.com/jquery-1.12.0.min.js"}
     :javascript
       window.jQuery || document.write('<script src="javascript/jquery-1.12.0.min.js"><\/script>')
