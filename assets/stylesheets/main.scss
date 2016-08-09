@@ -1,6 +1,7 @@
-@import "normalize"
-@import "box-sizing"
-@import "flexbox"
+@import "normalize";
+@import "box-sizing";
+@import "flexbox";
+@import "hover-fade";
 
 body {
 }
@@ -12,9 +13,41 @@ p {
 }
 
 .btn {
+  @include anim-hover-fade;
+  background-color: #53c953;
+  border-color: #1e811e;
+  color: #1e811e;border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  -webkit-touch-callout: none;
+  vertical-align: middle;
+
+  &.is-disabled,
+  &[disabled] {
+    background-color: #cce7cc;
+    border-color: #cce7cc;
+    color: #454f45;
+    cursor: not-allowed !important;
+  }
+}
+
+.content {
+  @include flexbox;
+  @include justify-content(space-between);
 }
 
 .product-list {
+  @include flexbox;
+  border: 1px solid #000;
+  
+  width: 30%;
 }
 
 .product {
@@ -33,6 +66,8 @@ p {
 }
 
 .cart {
+  @include flexbox;
+  width: 30%;
 }
 
 .cart__hed {
