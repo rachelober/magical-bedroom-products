@@ -1,5 +1,12 @@
-function calculateCartTotal(ary) {
-  return ary.reduce(function(a, b) { return a + b; }, 0);
+const $ = require('jquery');
+const priceInt = require('./priceInt');
+
+function calculateCartTotal(cart) {
+  var total = 0
+  $.each(cart, function( key, val ) {
+    total += priceInt(val.price)
+  });
+  return total
 }
 
 module.exports = calculateCartTotal;

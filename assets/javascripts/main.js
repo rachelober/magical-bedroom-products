@@ -5,10 +5,13 @@ const removeCartItem = require('./removeCartItem');
 const getCartCount = require('./getCartCount');
 
 $(document).ready(function() {
-  var cart = []
   fetchCart(cart => {
     updateCartCount(getCartCount(cart));
-    console.log(getCartCount(cart));
+    updateCartTotal(calculateCartTotal(cart));
+
+
+
+    console.log(cart);
   });
 
 });
@@ -47,7 +50,7 @@ function updateCartCount(num) {
   $("#cart-count").text(num);
 }
 
-function updateCartTotal(ary) {
-  total = "$" + calculateCartTotal([1200,200,400]);
+function updateCartTotal(num) {
+  total = "$" + num;
   $("#cart-total").text(total);
 }
