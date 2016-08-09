@@ -22,15 +22,15 @@ module.exports = function (grunt) {
     // Watch task config
     watch: {
       js: {
-        files: "app/assets/javascripts/**/*.js",
+        files: "assets/javascripts/**/*.js",
         tasks: ["jsBuild"]
       },
       sass: {
-        files: "app/assets/stylesheets/**/*.scss",
+        files: "assets/stylesheets/**/*.scss",
         tasks: ["sass"]
       },
       haml: {
-        files: "app/**/*.haml",
+        files: "assets/**/*.haml",
         tasks: ["haml"]
       }
     },
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
       dev: {
         files: {
           // destination            // source file
-          "build/index.html":       "app/index.haml",
+          "build/index.html":       "assets/index.haml",
         }
       }
     },
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
     // We use jQuery first and then build whatever comes next
     concat: {
       dev: {
-        src: ['app/assets/javascripts/jquery-2.1.1.min.js', 'app/assets/javascripts/src/*'],
+        src: ['assets/javascripts/jquery-2.1.1.min.js', 'assets/javascripts/*'],
         dest: 'build/javascripts/build.js',
       }
     },
