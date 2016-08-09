@@ -30,7 +30,8 @@
           </div>
         {% else %}
           <div class='product'>
-            <h2 class='product__name' itemprop='name'>
+            <h2 class='product__name' itemprop='name'
+            data-id='cart-empty'>
               No products!
             </h2>
           </div>
@@ -43,14 +44,14 @@
         </div>
         <div class='cart-items'>
           {% for item in cart_order %}
-            <div class='item'>
+            <div class='item' id="cart-item-{{ item.id }}">
               <div class='item__name'>
-                {{ item }}
+                {{ item.name }}
               </div>
               <div class='item__price'>
-                {{ item }}
+                {{ item.price }}
               </div>
-              <div class='item__remove'>
+              <div class='item__remove' data-id='{{ item.id }}'>
                 <div class='btn'>
                   x
                 </div>
@@ -62,7 +63,7 @@
 
         </div>
         <div class='cart__total'>
-          Total {{ cart_total }}
+          Total <span data-id='cart-total'>{{ cart_total }}</span>
         </div>
       </div>
     </div>
