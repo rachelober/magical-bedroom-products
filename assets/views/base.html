@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='ie=edge' http-equiv='x-ua-compatible'>
+    <title>Magical Bedroom Projects</title>
+    <meta content='' name='description'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <link href='stylesheets/main.css' rel='stylesheet'>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class='content'>
+      <div class='product-list'>
+        <div class='product'>
+          {% for product in products %}
+            <h2 class='product__name' itemprop='name'>
+              Ipsum
+            </h2>
+            <p class='product__dek' itemprop='description'>
+              Product description.
+            </p>
+            <div class='product__buy'>
+              <div class='btn'>
+                Buy
+              </div>
+            </div>
+            </div>
+          {% else %}
+            <h2 class='product__name' itemprop='name'>
+              No products!
+            </h2>
+          {% endfor %}
+        </div>
+      </div>
+      <div class='cart'>
+        <div class='cart__hed'>
+          Cart
+          <span class='cart__count'>{{ cart_count }}</span>
+        </div>
+        <div class='cart-items'>
+          {% for item in items %}
+            <div class='item'>
+              <div class='item__name'>
+                {{ name }}
+              </div>
+              <div class='item__price'>
+                {{ price }}
+              </div>
+              <div class='item__remove'>
+                <div class='btn'>
+                  x
+                </div>
+              </div>
+            </div>
+          {% else %}
+            Nothing in cart!
+          {% endfor %}
+
+        </div>
+        <div class='cart__total'>
+          Total {{ cart_total }}
+        </div>
+      </div>
+    </div>
+    <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
+    <script>
+      window.jQuery || document.write('<script src="javascript/jquery-1.12.0.min.js"><\/script>')
+    </script>
+    <script src='javascripts/main.js'></script>
+  </body>
+</html>
+

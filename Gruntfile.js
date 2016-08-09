@@ -3,8 +3,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-browser-sync");
   grunt.loadNpmTasks('grunt-contrib-symlink');
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.loadNpmTasks("grunt-haml2html");
-  grunt.loadNpmTasks('grunt-nunjucks');
+  grunt.loadNpmTasks('grunt-nunjucks-render');
   grunt.loadNpmTasks("grunt-symdiff");
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-sass-lint');
@@ -30,23 +29,9 @@ module.exports = function (grunt) {
         files: "assets/stylesheets/**/*.scss",
         tasks: ["sass"]
       },
-      haml: {
-        files: "assets/**/*.haml",
-        tasks: ["haml"]
-      },
-      nunjucks: {
+      nunjucks_render: {
         files: "assets/views/*",
-        tasks: ["nunjucks"]
-      }
-    },
-
-    // Haml task config
-    haml: {
-      dev: {
-        files: {
-          // destination            // source file
-          "build/index.html":       "assets/index.haml",
-        }
+        tasks: ["nunjucks_render"]
       }
     },
 
@@ -75,17 +60,14 @@ module.exports = function (grunt) {
       }
     },
 
-    nunjucks: {
-      precompile: {
+    nunjucks_render: {
+      options: {
         baseDir: 'assets/views/',
-        src: 'assetsviews/*',
-        dest: 'build/javascripts/templates.js',
-        options: {
-          env: require('./nunjucks-environment'),
-          name: function(filename) {
-            return 'foo/' + filename;
-          }
-        }
+        data: ['http://localhost:3000/products', 'http://localhost:3000/cart_order'],
+      },
+      files: {
+        src:  'assets/views/index.html',
+        dest: 'build/index.html'
       }
     },
 
@@ -162,7 +144,7 @@ module.exports = function (grunt) {
   grunt.registerTask("test", ["symdiff"]);
 
   // Used to set up your environment for the first time.
-  grunt.registerTask("setup", ["clean", "sass", "haml", "concat", "symlink"]);
+  grunt.registerTask("setup", ["clean", "sass", "nunjucks_render", "concat", "symlink"]);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
