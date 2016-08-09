@@ -1,0 +1,15 @@
+// Mixin that adds the passed in transitions to an element
+// in a cross-browser compatible way
+//
+// Sourced from http://codepen.io/sawmac/pen/cayhK
+//
+// Cutomizable options:
+//
+// $args - a list of comman separated transition declarations
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
