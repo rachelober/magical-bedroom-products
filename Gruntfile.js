@@ -8,6 +8,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-sass-lint');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-browserify');
 
   var symdiffCSS = require('symdiff-css'),
       symdiffHTML = require('symdiff-html');
@@ -72,12 +73,15 @@ module.exports = function (grunt) {
     },
 
     // Javascript build task
-    concat: {
-      dev: {
+    browserify: {
+      dist: {
         src: [
           'assets/javascripts/jquery-1.12.0.min.js',
           'assets/javascripts/nunjucks.min.js',
-          'assets/javascripts/main.js'
+          'assets/javascripts/priceInt.js',
+          'assets/javascripts/fetchCart.js',
+          'assets/javascripts/fetchProducts.js',
+          'assets/javascripts/calculateCartTotal.js',
         ],
         dest: 'build/javascripts/main.js',
       }
@@ -145,7 +149,7 @@ module.exports = function (grunt) {
   grunt.registerTask("test", ["symdiff"]);
 
   // Used to set up your environment for the first time.
-  grunt.registerTask("setup", ["clean", "sass", "nunjucks_render", "concat", "symlink"]);
+  grunt.registerTask("setup", ["clean", "sass", "nunjucks_render", "browserify", "symlink"]);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
