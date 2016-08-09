@@ -55,15 +55,15 @@ module.exports = function (grunt) {
         outputStyle: 'expanded',
         includePaths: [
           './assets/styesheets/',
-          './bower_components/sass-flex-mixin/',
         ]
       }
     },
 
+    // Use Nunjucks for templating
     nunjucks_render: {
       options: {
         baseDir: 'assets/views/',
-        data: 'data/db.json',
+        data: 'data/db.json'
       },
       files: {
         src:  'assets/views/index.html',
@@ -74,7 +74,11 @@ module.exports = function (grunt) {
     // Javascript build task
     concat: {
       dev: {
-        src: ['assets/javascripts/jquery-1.12.0.min.js', 'assets/javascripts/main.js'],
+        src: [
+          'assets/javascripts/jquery-1.12.0.min.js',
+          'assets/javascripts/nunjucks.min.js',
+          'assets/javascripts/main.js'
+        ],
         dest: 'build/javascripts/main.js',
       }
     },
@@ -145,5 +149,9 @@ module.exports = function (grunt) {
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
-  grunt.registerTask("default", ["setup", "browserSync", "watch"]);
+  grunt.registerTask("watch", ["setup", "browserSync", "watch"]);
+
+  // The default task will set up the evironment by compiling assets,
+  // setting up browserSync, and then watching files for changes.
+  grunt.registerTask("default", ["setup"]);
 };

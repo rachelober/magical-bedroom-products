@@ -13,6 +13,11 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class='content'>
+      {% block content %} <!--- Our content will be here -->
+      {% endblock %}
+
+
+
       <div class='product-list'>
         {% for product in products %}
           <div class='product'>
@@ -40,7 +45,7 @@
       <div class='cart'>
         <div class='cart__hed'>
           Cart
-          <span class='cart__count' data-id='cart-count'></span>
+          <span class='cart__count' data-id='cart-count' id='cart-count'></span>
         </div>
         <div class='cart-items'>
           {% for item in cart_order %}
@@ -63,14 +68,10 @@
 
         </div>
         <div class='cart__total'>
-          Total <span data-id='cart-total'>{{ cart_total }}</span>
+          Total <span data-id='cart-total' id='cart-total'>{{ cart_total }}</span>
         </div>
       </div>
     </div>
-    <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
-    <script>
-      window.jQuery || document.write('<script src="javascript/jquery-1.12.0.min.js"><\/script>')
-    </script>
     <script src='javascripts/main.js'></script>
   </body>
 </html>
