@@ -39,16 +39,16 @@
       <div class='cart'>
         <div class='cart__hed'>
           Cart
-          <span class='cart__count'>{{ cart_count }}</span>
+          <span class='cart__count' data-id='cart-count'></span>
         </div>
         <div class='cart-items'>
-          {% for item in items %}
+          {% for item in cart_order %}
             <div class='item'>
               <div class='item__name'>
-                {{ name }}
+                {{ item }}
               </div>
               <div class='item__price'>
-                {{ price }}
+                {{ item }}
               </div>
               <div class='item__remove'>
                 <div class='btn'>

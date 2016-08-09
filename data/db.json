@@ -19,5 +19,5 @@
       "price": "$1500"
     }
   ],
-  "cart_order": []
+  "cart_order": [ 1, 2, 2]
 }

@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: "assets/javascripts/**/*.js",
-        tasks: ["jsBuild"]
+        tasks: ["concat"]
       },
       sass: {
         files: "assets/stylesheets/**/*.scss",
@@ -71,14 +71,11 @@ module.exports = function (grunt) {
       }
     },
 
-    // Used to put version at top of javascript build
-    pkg: grunt.file.readJSON('package.json'),
     // Javascript build task
-    // We use jQuery first and then build whatever comes next
     concat: {
       dev: {
-        src: ['assets/javascripts/jquery-2.1.1.min.js', 'assets/javascripts/*'],
-        dest: 'build/javascripts/build.js',
+        src: ['assets/javascripts/jquery-1.12.0.min.js', 'assets/javascripts/main.js'],
+        dest: 'build/javascripts/main.js',
       }
     },
 
