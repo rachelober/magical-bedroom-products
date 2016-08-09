@@ -1,9 +1,9 @@
+const $ = require('jquery');
+const calculateCartTotal = require('./calculateCartTotal');
+
 $(document).ready(function() {
   updateCartCount();
   updateCartTotal();
-  fetchProducts();
-  fetchCart();
-  calculateTotal();
 });
 
 $(".item__remove").click(function() {
@@ -41,38 +41,6 @@ $(".product__buy").click(function() {
   });
 });
 
-function fetchProducts() {
-  var api = "http://localhost:3000/products";
-
-  var response = $.getJSON( api, function( data ) {
-    return data
-  });
-
-
-  return response;
-}
-
-function fetchCart() {
-  var uri = "http://localhost:3000/cart_order";
-  var cart = [];
-
-  $.ajax({
-    url: uri,
-    type: 'get',
-    dataType: 'json',
-    success: function(data) {
-      $.each(data, function( key, val ) {
-        //console.log(key);
-      });
-    },
-    error: function(e) {
-      console.log(e.message);
-    }
-  });
-}
-
-
-
 function updateCartCount() {
   var api = "http://localhost:3000/cart_order";
   $.getJSON( api, { } )
@@ -81,9 +49,7 @@ function updateCartCount() {
     });
 }
 
-function updateCartTotal() {
-  total = "$" + calculateTotal();
+function updateCartTotal(ary) {
+  total = "$" + calculateCartTotal([1200,200,400]);
   $("#cart-total").text(total);
 }
-
-
