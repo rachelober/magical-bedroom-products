@@ -8,12 +8,7 @@ $(document).ready(function() {
   fetchCart(cart => {
     updateCartCount(getCartCount(cart));
     updateCartTotal(calculateCartTotal(cart));
-
-
-
-    console.log(cart);
   });
-
 });
 
 $(".item__remove").click(function() {
@@ -21,9 +16,16 @@ $(".item__remove").click(function() {
   var data_id = item.data("id");
   var parent_label = "cart-item-" + data_id;
 
-  removeCartItem(data_id, function() {
+  var request = removeCartItem(data_id, function() {
     $("#cart-item-" + data_id).remove();
-    updateCartTotal();
+  });
+
+  request.done(function() {
+    fetchCart(cart => {
+      console.log(cart);
+      updateCartCount(getCartCount(cart));
+      updateCartTotal(calculateCartTotal(cart));
+    });
   });
 });
 
