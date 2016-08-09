@@ -82,9 +82,9 @@ module.exports = function (grunt) {
           'assets/javascripts/fetchCart.js',
           'assets/javascripts/fetchProducts.js',
           'assets/javascripts/calculateCartTotal.js',
-          'assets/javascripts/main.js',
+          'assets/javascripts/main.js'
         ],
-        dest: 'build/javascripts/main.js',
+        dest: 'build/javascripts/main.js'
       }
     },
 

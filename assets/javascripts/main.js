@@ -1,5 +1,7 @@
 const $ = require('jquery');
 const calculateCartTotal = require('./calculateCartTotal');
+const fetchCart = require('./fetchCart');
+const getCartCount = require('./getCartCount');
 
 $(document).ready(function() {
   updateCartCount();
@@ -42,11 +44,8 @@ $(".product__buy").click(function() {
 });
 
 function updateCartCount() {
-  var api = "http://localhost:3000/cart_order";
-  $.getJSON( api, { } )
-    .done(function( data ) {
-      $("#cart-count").text(data.length);
-    });
+  count = getCartCount();
+  $("#cart-count").text(count);
 }
 
 function updateCartTotal(ary) {
