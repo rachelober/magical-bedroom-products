@@ -32,6 +32,13 @@ $(document).ready(function() {
       });
     });
   });
+});
+
+function renderCart(cart) {
+  $.each(cart, function( key, val ) {
+    var res = nunjucks.render('views/cart-item.html', val);
+    $("#cart-items").append(res);
+  });
 
   $(".item__remove").click(function() {
     var item          = $(this);
@@ -48,13 +55,6 @@ $(document).ready(function() {
         updateCartTotal(calculateCartTotal(cart));
       });
     });
-  });
-});
-
-function renderCart(cart) {
-  $.each(cart, function( key, val ) {
-    var res = nunjucks.render('views/cart-item.html', val);
-    $("#cart-items").append(res);
   });
 }
 
