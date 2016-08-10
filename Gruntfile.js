@@ -174,7 +174,7 @@ module.exports = function (grunt) {
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
-  grunt.registerTask("server", ["setup", "serve", "watch"]);
+  grunt.registerTask("server", ["setup", "serve"]);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
