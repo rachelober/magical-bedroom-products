@@ -12,7 +12,6 @@ function addCartItem(cart_item, callback) {
     dataType: 'json',
     url: 'http://localhost:3000/cart_order',
     data: cart_item,
-    async: false,
     success: cart => callback(parseJSON(cart)),
   });
 }
