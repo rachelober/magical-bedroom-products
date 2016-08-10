@@ -3,7 +3,6 @@
 const $ = require('jquery');
 
 function parseJSON(cart) {
-  console.log(cart);
   return cart;
 }
 
