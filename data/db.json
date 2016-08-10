@@ -20,20 +20,6 @@
     }
   ],
   "cart_order": [
-    {
-      "name": "Reusable Tissues",
-      "price": "$1500",
-      "id": 1
-    },
-    {
-      "name": "Reusable Tissues",
-      "price": "$1500",
-      "id": 2
-    },
-    {
-      "name": "Reusable Tissues",
-      "price": "$1500",
-      "id": 3
-    }
+
   ]
 }

@@ -14,39 +14,39 @@ $(document).ready(function() {
     updateCartCount(getCartCount(cart));
     updateCartTotal(calculateCartTotal(cart));
   });
-});
 
-$(".product__buy").click(function() {
-  var item        = $(this);
-  var dataName    = item.data("name");
-  var dataPrice   = item.data("price");
-  var data        = { name: dataName, price: dataPrice }
+  $(".product__buy").click(function() {
+    var item        = $(this);
+    var dataName    = item.data("name");
+    var dataPrice   = item.data("price");
+    var data        = { name: dataName, price: dataPrice }
 
-  var request = addCartItem(data, function() {
-    addCartRow(data);
-  });
+    var request = addCartItem(data, function() {
+      addCartRow(data);
+    });
 
-  request.done(function() {
-    fetchCart(cart => {
-      updateCartCount(getCartCount(cart));
-      updateCartTotal(calculateCartTotal(cart));
+    request.done(function() {
+      fetchCart(cart => {
+        updateCartCount(getCartCount(cart));
+        updateCartTotal(calculateCartTotal(cart));
+      });
     });
   });
-});
 
-$(".item__remove").click(function() {
-  var item          = $(this);
-  var data_id       = item.data("id");
-  var parent_label  = "cart-item-" + data_id;
+  $(".item__remove").click(function() {
+    var item          = $(this);
+    var data_id       = item.data("id");
+    var parent_label  = "cart-item-" + data_id;
 
-  var request = removeCartItem(data_id, function() {
-    $("#cart-item-" + data_id).remove();
-  });
+    var request = removeCartItem(data_id, function() {
+      $("#cart-item-" + data_id).remove();
+    });
 
-  request.done(function() {
-    fetchCart(cart => {
-      updateCartCount(getCartCount(cart));
-      updateCartTotal(calculateCartTotal(cart));
+    request.done(function() {
+      fetchCart(cart => {
+        updateCartCount(getCartCount(cart));
+        updateCartTotal(calculateCartTotal(cart));
+      });
     });
   });
 });
