@@ -1,0 +1,13 @@
+<div class='product'>
+  <h2 class='product__name' itemprop='name'>
+    {{ product.name }}
+  </h2>
+  <p class='product__dek' itemprop='description'>
+    {{ product.description }}
+  </p>
+  <div class='product__buy' data-name='{{ product.name }}' data-price='{{ product.price }}'>
+    <div class='btn'>
+      Buy
+    </div>
+  </div>
+</div>

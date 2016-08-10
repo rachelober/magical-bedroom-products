@@ -2,7 +2,9 @@
   "name": "magical-bedroom-products",
   "version": "1.0.0",
   "description": "Magical Bedroom Products Catalog",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.14.0"
+  },
   "devDependencies": {
     "babel-jest": "^14.1.0",
     "babel-polyfill": "^6.13.0",

@@ -1,11 +1,11 @@
-<div class='item'>
+<div class='item' id="cart-item-{{ item.id }}">
   <div class='item__name'>
-    {{ name }}
+    {{ item.name }}
   </div>
   <div class='item__price'>
-    {{ price }}
+    {{ item.price }}
   </div>
-  <div class='item__remove'>
+  <div class='item__remove' data-id='{{ item.id }}'>
     <div class='btn'>
       x
     </div>

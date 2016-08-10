@@ -13,59 +13,25 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class='content'>
-      {% block content %} <!--- Our content will be here -->
-      {% endblock %}
-
-
 
       <div class='product-list'>
-        {% for product in products %}
-          <div class='product'>
-            <h2 class='product__name' itemprop='name'>
-              {{ product.name }}
-            </h2>
-            <p class='product__dek' itemprop='description'>
-              {{ product.description }}
-            </p>
-            <div class='product__buy' data-name='{{ product.name }}'
-              data-price='{{ product.price }}'>
-              <div class='btn'>
-                Buy
-              </div>
-            </div>
-          </div>
-        {% else %}
-          <div class='product'>
-            <h2 class='product__name' itemprop='name'
-            data-id='cart-empty'>
-              No products!
-            </h2>
-          </div>
-        {% endfor %}
+
+        {% asyncEach product in products %}
+          {% include "product.html" %}
+        {% endeach %}
+
       </div>
+
       <div class='cart'>
         <div class='cart__hed'>
           Cart
           <span class='cart__count' data-id='cart-count' id='cart-count'></span>
         </div>
         <div class='cart-items' id='cart-items'>
-          {% for item in cart_order %}
-            <div class='item' id="cart-item-{{ item.id }}">
-              <div class='item__name'>
-                {{ item.name }}
-              </div>
-              <div class='item__price'>
-                {{ item.price }}
-              </div>
-              <div class='item__remove' data-id='{{ item.id }}'>
-                <div class='btn'>
-                  x
-                </div>
-              </div>
-            </div>
-          {% else %}
-            Nothing in cart!
-          {% endfor %}
+
+          {% asyncEach item in cart_order %}
+            {% include "cart-item.html" %}
+          {% endeach %}
 
         </div>
         <div class='cart__total'>
