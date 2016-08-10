@@ -84,20 +84,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Used to put version at top of javascript build
-    // Javascript build task
-    // We use jQuery first and then build whatever comes next
-    concat: {
-      dev: {
-        src: [
-          'assets/javascripts/jquery-1.12.0.min.js',
-          'assets/javascripts/nunjucks.min.js',
-          'assets/javascripts/main.js'
-        ],
-        dest: 'build/javascripts/main.js'
-      }
-    },
-
     // Grunt-sass-lint
     sasslint: {
       options: {
@@ -168,7 +154,7 @@ module.exports = function (grunt) {
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
-  grunt.registerTask("watch", ["setup", "browserSync", "watch"]);
+  grunt.registerTask("server", ["setup", "browserSync", "watch"]);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
