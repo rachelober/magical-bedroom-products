@@ -78,10 +78,20 @@ module.exports = function (grunt) {
         src: [
           'assets/javascripts/jquery-1.12.0.min.js',
           'assets/javascripts/nunjucks.min.js',
-          'assets/javascripts/priceInt.js',
-          'assets/javascripts/fetchCart.js',
-          'assets/javascripts/fetchProducts.js',
-          'assets/javascripts/calculateCartTotal.js',
+          'assets/javascripts/main.js'
+        ],
+        dest: 'build/javascripts/main.js'
+      }
+    },
+
+    // Used to put version at top of javascript build
+    // Javascript build task
+    // We use jQuery first and then build whatever comes next
+    concat: {
+      dev: {
+        src: [
+          'assets/javascripts/jquery-1.12.0.min.js',
+          'assets/javascripts/nunjucks.min.js',
           'assets/javascripts/main.js'
         ],
         dest: 'build/javascripts/main.js'

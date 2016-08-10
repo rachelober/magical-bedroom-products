@@ -16,6 +16,7 @@ describe('removeCartItem', () => {
     // 2 lines
     expect($.ajax).toBeCalledWith({
       type: 'DELETE',
+    dataType: 'json',
       url: 'http://localhost:3000/cart_order/' + dummyID,
       success: jasmine.any(Function),
     });

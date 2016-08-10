@@ -1,15 +1,15 @@
 'use strict';
 
-jest.unmock('../fetchCart.js');
+jest.unmock('../addCartItem.js');
 
-describe('fetchCart', () => {
+describe('addCartItem', () => {
   it('calls into $.ajax with the correct params', () => {
     const $ = require('jquery');
-    const fetchCart = require('../fetchCart');
+    const addCartItem = require('../addCartItem');
 
     // Call into the function we want to test
     const dummyCallback = () => {};
-    fetchCart(dummyCallback);
+    addCartItem(dummyCallback);
 
     // Now make sure that $.ajax was properly called during the previous
     // 2 lines
@@ -23,11 +23,11 @@ describe('fetchCart', () => {
 
   it('calls the callback when $.ajax requests are finished', () => {
     const $ = require('jquery');
-    const fetchCart = require('../fetchCart');
+    const addCartItem = require('../addCartItem');
 
     // Create a mock function for our callback
     const callback = jest.fn();
-    fetchCart(callback);
+    addCartItem(callback);
 
     // Now we emulate the process by which `$.ajax` would execute its own
     // callback

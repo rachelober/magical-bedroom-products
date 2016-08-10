@@ -1,3 +1,5 @@
+'use strict';
+
 function priceInt(str) {
   str = str.slice(1);
   return parseInt(str);
