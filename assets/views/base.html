@@ -39,8 +39,15 @@
         </div>
       </div>
     </div>
+    <div id="results">
+    </div>
     <script src='javascripts/main.js'></script>
     <script src='javascripts/nunjucks.min.js'></script>
+    <script>
+        var compiled = nunjucks.renderString('Hello {{ username }}', { username: 'USER' });
+        document.getElementById('results').innerHTML = compiled
+        console.log(compiled)
+    </script>
   </body>
 </html>
 

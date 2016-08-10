@@ -5,7 +5,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks('grunt-nunjucks-render');
   grunt.loadNpmTasks("grunt-symdiff");
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-sass-lint');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-browserify');
@@ -24,7 +23,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: "assets/javascripts/**/*.js",
-        tasks: ["concat"]
+        tasks: ["browserify"]
       },
       sass: {
         files: "assets/stylesheets/**/*.scss",
@@ -76,11 +75,12 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         src: [
-          'assets/javascripts/jquery-1.12.0.min.js',
-          'assets/javascripts/nunjucks.min.js',
           'assets/javascripts/main.js'
         ],
-        dest: 'build/javascripts/main.js'
+        dest: 'build/javascripts/main.js',
+        options: {
+          transform: ['nunjucksify', 'babelify']
+        }
       }
     },
 

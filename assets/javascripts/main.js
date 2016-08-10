@@ -1,4 +1,6 @@
 const $                   = require('jquery');
+const nunjucks            = require('nunjucks');
+
 const addCartItem         = require('./addCartItem');
 const calculateCartTotal  = require('./calculateCartTotal');
 const fetchCart           = require('./fetchCart');
@@ -8,6 +10,8 @@ const removeCartItem      = require('./removeCartItem');
 
 $(document).ready(function() {
   fetchCart(cart => {
+    //renderCart();
+    //renderProducts();
     updateCartCount(getCartCount(cart));
     updateCartTotal(calculateCartTotal(cart));
   });
@@ -22,6 +26,13 @@ $(".product__buy").click(function() {
   var request = addCartItem(data, function() {
     addCartRow(data);
   });
+
+  request.done(function() {
+    fetchCart(cart => {
+      updateCartCount(getCartCount(cart));
+      updateCartTotal(calculateCartTotal(cart));
+    });
+  });
 });
 
 $(".item__remove").click(function() {
@@ -35,7 +46,6 @@ $(".item__remove").click(function() {
 
   request.done(function() {
     fetchCart(cart => {
-      console.log(cart);
       updateCartCount(getCartCount(cart));
       updateCartTotal(calculateCartTotal(cart));
     });
@@ -43,14 +53,14 @@ $(".item__remove").click(function() {
 });
 
 function addCartRow(data) {
-  $('#cart-items').text("test");
+  $('#cart-items').append(data);
 }
 
 function updateCartCount(num) {
-  $("#cart-count").text(num);
+  $("#cart-count").text("hello");
 }
 
 function updateCartTotal(num) {
-  total = "$" + num;
+  var total = "$" + num;
   $("#cart-total").text(total);
 }
