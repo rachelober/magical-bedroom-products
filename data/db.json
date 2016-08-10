@@ -26,29 +26,14 @@
       "id": 1
     },
     {
-      "name": "Magical Night-lite",
-      "price": "$1000",
+      "name": "Reusable Tissues",
+      "price": "$1500",
       "id": 2
     },
     {
       "name": "Reusable Tissues",
       "price": "$1500",
       "id": 3
-    },
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 4
-    },
-    {
-      "name": "Never ending glass of Water",
-      "price": "$2000",
-      "id": 5
-    },
-    {
-      "name": "Never ending glass of Water",
-      "price": "$2000",
-      "id": 6
     }
   ]
 }

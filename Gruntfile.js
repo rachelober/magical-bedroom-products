@@ -8,6 +8,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-sass-lint');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-serve');
 
   var symdiffCSS = require('symdiff-css'),
       symdiffHTML = require('symdiff-html');
@@ -155,6 +156,13 @@ module.exports = function (grunt) {
       }
     },
 
+    serve: {
+      options: {
+        port: 9000,
+        path: 'build'
+      }
+    }
+
   });
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
@@ -166,7 +174,7 @@ module.exports = function (grunt) {
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
-  grunt.registerTask("server", ["setup", "browserSync", "watch"]);
+  grunt.registerTask("server", ["setup", "serve", "watch"]);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.

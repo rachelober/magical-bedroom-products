@@ -1,5 +1,5 @@
 const $                   = require('jquery');
-window.nunjucks           = require('nunjucks');
+//window.nunjucks           = require('nunjucks');
 
 const addCartItem         = require('./addCartItem');
 const calculateCartTotal  = require('./calculateCartTotal');
@@ -11,7 +11,6 @@ const removeCartItem      = require('./removeCartItem');
 $(document).ready(function() {
   fetchCart(cart => {
     renderCart(cart);
-    //renderProducts();
     updateCartCount(getCartCount(cart));
     updateCartTotal(calculateCartTotal(cart));
   });
