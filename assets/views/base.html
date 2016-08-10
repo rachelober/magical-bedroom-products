@@ -29,10 +29,6 @@
         </div>
         <div class='cart-items' id='cart-items'>
 
-          {% asyncEach item in cart_order %}
-            {% include "assets/views/cart-item.html" %}
-          {% endeach %}
-
         </div>
         <div class='cart__total'>
           Total <span data-id='cart-total' id='cart-total'>{{ cart_total }}</span>

@@ -10,7 +10,7 @@ const removeCartItem      = require('./removeCartItem');
 
 $(document).ready(function() {
   fetchCart(cart => {
-    //renderCart();
+    renderCart(cart);
     //renderProducts();
     updateCartCount(getCartCount(cart));
     updateCartTotal(calculateCartTotal(cart));
@@ -52,11 +52,15 @@ $(".item__remove").click(function() {
   });
 });
 
+function renderCart(cart) {
+  $.each(cart, function( key, val ) {
+    var res = nunjucks.render('views/cart-item.html', val);
+    $("#cart-items").append(res);
+  });
+}
+
 function addCartRow(data) {
-  var name = data.name;
-  var price = data.price;
-  console.log(data);
-  var res = nunjucks.render('views/cart-item.html', { id: 2, name: name, price: price });
+  var res = nunjucks.render('views/cart-item.html', data);
   $("#cart-items").append(res);
 }
 
