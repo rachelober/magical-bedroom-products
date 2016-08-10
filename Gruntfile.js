@@ -137,6 +137,10 @@ module.exports = function (grunt) {
         // Enable force to overwrite symlinks outside the current working directory
         force: false
       },
+      explicit: {
+        src:    'assets/javascripts/nunjucks.min.js',
+        dest:   'build/javascripts/nunjucks.min.js'
+      },
     },
 
     // Configuration to be run (and then tested).
