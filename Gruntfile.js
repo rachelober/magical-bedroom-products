@@ -61,13 +61,16 @@ module.exports = function (grunt) {
 
     // Use Nunjucks for templating
     nunjucks_render: {
-      options: {
-        baseDir: 'assets/views/',
-        data: 'data/db.json'
+      dev: {
+        files: [{
+          expand: true,
+          cwd: 'assets/views/',
+          src: ['index.html'],
+          dest: 'build/'
+        }]
       },
-      files: {
-        src:  'assets/views/index.html',
-        dest: 'build/index.html'
+      options: {
+        data: 'data/db.json'
       }
     },
 
@@ -127,6 +130,15 @@ module.exports = function (grunt) {
         src:    'assets/javascripts/nunjucks.min.js',
         dest:   'build/javascripts/nunjucks.min.js'
       },
+      expanded: {
+        files: [{
+          expand: true,
+          overwrite: true,
+          cwd: 'assets/views/',
+          src: ['**/*.html'],
+          dest: 'build/views'
+        }]
+      }
     },
 
     // Configuration to be run (and then tested).

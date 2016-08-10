@@ -20,50 +20,5 @@
     }
   ],
   "cart_order": [
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 7
-    },
-    {
-      "name": "Reusable Tissues",
-      "price": "$1500",
-      "id": 8
-    },
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 9
-    },
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 10
-    },
-    {
-      "name": "Reusable Tissues",
-      "price": "$1500",
-      "id": 11
-    },
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 12
-    },
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 13
-    },
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 14
-    },
-    {
-      "name": "Magical Night-lite",
-      "price": "$1000",
-      "id": 15
-    }
-  ]
+   ]
 }

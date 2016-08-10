@@ -17,7 +17,7 @@
       <div class='product-list'>
 
         {% asyncEach product in products %}
-          {% include "product.html" %}
+          {% include "assets/views/product.html" %}
         {% endeach %}
 
       </div>
@@ -30,7 +30,7 @@
         <div class='cart-items' id='cart-items'>
 
           {% asyncEach item in cart_order %}
-            {% include "cart-item.html" %}
+            {% include "assets/views/cart-item.html" %}
           {% endeach %}
 
         </div>

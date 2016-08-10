@@ -53,7 +53,11 @@ $(".item__remove").click(function() {
 });
 
 function addCartRow(data) {
-  $('#cart-items').append(data);
+  var name = data.name;
+  var price = data.price;
+  console.log(data);
+  var res = nunjucks.render('views/cart-item.html', { id: 2, name: name, price: price });
+  $("#cart-items").append(res);
 }
 
 function updateCartCount(num) {
