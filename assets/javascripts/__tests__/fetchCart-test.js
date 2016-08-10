@@ -15,7 +15,7 @@ describe('fetchCart', () => {
     // 2 lines
     expect($.ajax).toBeCalledWith({
       type: 'GET',
-    dataType: 'json',
+      dataType: 'json',
       url: 'http://localhost:3000/cart_order',
       success: jasmine.any(Function),
     });

@@ -8,26 +8,29 @@ describe('addCartItem', () => {
     const addCartItem = require('../addCartItem');
 
     // Call into the function we want to test
+    const cart_item = { name: "test", description: "test", price: "$20" }
     const dummyCallback = () => {};
-    addCartItem(dummyCallback);
+    addCartItem(cart_item, dummyCallback);
 
     // Now make sure that $.ajax was properly called during the previous
     // 2 lines
     expect($.ajax).toBeCalledWith({
-      type: 'GET',
-    dataType: 'json',
+      type: 'POST',
+      dataType: 'json',
       url: 'http://localhost:3000/cart_order',
       success: jasmine.any(Function),
+      data: cart_item,
     });
   });
 
-  it('calls the callback when $.ajax requests are finished', () => {
+  it('cart is updated with the new data', () => {
     const $ = require('jquery');
     const addCartItem = require('../addCartItem');
 
     // Create a mock function for our callback
+    const cart_item = { name: "test", description: "test", price: "$20" }
     const callback = jest.fn();
-    addCartItem(callback);
+    addCartItem(cart_item, callback);
 
     // Now we emulate the process by which `$.ajax` would execute its own
     // callback

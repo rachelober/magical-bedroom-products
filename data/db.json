@@ -37,6 +37,11 @@
       "name": "Reusable Tissues",
       "description": "Every good beside has a box of tissues. Never run out with reusable tissues. A must for all sleepers with allergies.",
       "price": "$1500"
+    },
+    {
+      "dataName": "Reusable Tissues",
+      "dataPrice": "$1500",
+      "id": 4
     }
   ]
 }

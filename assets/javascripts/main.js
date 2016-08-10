@@ -1,8 +1,10 @@
-const $ = require('jquery');
-const calculateCartTotal = require('./calculateCartTotal');
-const fetchCart = require('./fetchCart');
-const removeCartItem = require('./removeCartItem');
-const getCartCount = require('./getCartCount');
+const $                   = require('jquery');
+const addCartItem         = require('./addCartItem');
+const calculateCartTotal  = require('./calculateCartTotal');
+const fetchCart           = require('./fetchCart');
+const getCartCount        = require('./getCartCount');
+const priceInt            = require('./priceInt');
+const removeCartItem      = require('./removeCartItem');
 
 $(document).ready(function() {
   fetchCart(cart => {
@@ -11,10 +13,21 @@ $(document).ready(function() {
   });
 });
 
+$(".product__buy").click(function() {
+  var item        = $(this);
+  var dataName    = item.data("name");
+  var dataPrice   = item.data("price");
+  var data        = { dataName, dataPrice }
+
+  var request = addCartItem(data, function() {
+    console.log("yay!");
+  });
+});
+
 $(".item__remove").click(function() {
-  var item = $(this);
-  var data_id = item.data("id");
-  var parent_label = "cart-item-" + data_id;
+  var item          = $(this);
+  var data_id       = item.data("id");
+  var parent_label  = "cart-item-" + data_id;
 
   var request = removeCartItem(data_id, function() {
     $("#cart-item-" + data_id).remove();
@@ -26,25 +39,6 @@ $(".item__remove").click(function() {
       updateCartCount(getCartCount(cart));
       updateCartTotal(calculateCartTotal(cart));
     });
-  });
-});
-
-$(".product__buy").click(function() {
-  var item = $(this);
-  var data_id = item.data("id");
-  var parent_label = "cart-item-" + data_id;
-  var api = "http://localhost:3000/cart_order/";
-
-  $.ajax({
-    url: api,
-    type: 'PUT',
-    data: {
-      item: "test"
-    },
-    success: function(result) {
-      updateCartTotal();
-      updateCartCount();
-    }
   });
 });
 

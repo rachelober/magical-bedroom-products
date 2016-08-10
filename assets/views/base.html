@@ -27,7 +27,8 @@
             <p class='product__dek' itemprop='description'>
               {{ product.description }}
             </p>
-            <div class='product__buy'>
+            <div class='product__buy' data-name='{{ product.name }}'
+              data-price='{{ product.price }}'>
               <div class='btn'>
                 Buy
               </div>
