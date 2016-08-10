@@ -39,9 +39,14 @@
       "price": "$1500"
     },
     {
-      "dataName": "Reusable Tissues",
-      "dataPrice": "$1500",
+      "name": "Reusable Tissues",
+      "price": "$1500",
       "id": 4
+    },
+    {
+      "name": "Reusable Tissues",
+      "price": "$1500",
+      "id": 5
     }
   ]
 }

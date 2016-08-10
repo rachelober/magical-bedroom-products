@@ -17,10 +17,10 @@ $(".product__buy").click(function() {
   var item        = $(this);
   var dataName    = item.data("name");
   var dataPrice   = item.data("price");
-  var data        = { dataName, dataPrice }
+  var data        = { name: dataName, price: dataPrice }
 
   var request = addCartItem(data, function() {
-    console.log("yay!");
+    addCartRow(data);
   });
 });
 
@@ -41,6 +41,10 @@ $(".item__remove").click(function() {
     });
   });
 });
+
+function addCartRow(data) {
+  $('#cart-items').text("test");
+}
 
 function updateCartCount(num) {
   $("#cart-count").text(num);
