@@ -1,5 +1,5 @@
 const $                   = require('jquery');
-const nunjucks            = require('nunjucks');
+window.nunjucks           = require('nunjucks');
 
 const addCartItem         = require('./addCartItem');
 const calculateCartTotal  = require('./calculateCartTotal');
@@ -57,7 +57,7 @@ function addCartRow(data) {
 }
 
 function updateCartCount(num) {
-  $("#cart-count").text("hello");
+  $("#cart-count").text(num);
 }
 
 function updateCartTotal(num) {
