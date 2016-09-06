@@ -1,13 +1,13 @@
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks("grunt-browser-sync");
+  grunt.loadNpmTasks('grunt-browser-sync');
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-symlink');
-  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nunjucks-render');
-  grunt.loadNpmTasks("grunt-symdiff");
+  grunt.loadNpmTasks('grunt-symdiff');
   grunt.loadNpmTasks('grunt-sass-lint');
   grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-serve');
 
   var symdiffCSS = require('symdiff-css'),
@@ -16,23 +16,23 @@ module.exports = function (grunt) {
   grunt.initConfig({
     // Before generating new files, clean up!
     clean: {
-      build: ["./build"],
-      tests: ["./tmp"]
+      build: ['./build'],
+      tests: ['./tmp']
     },
 
     // Watch task config
     watch: {
       js: {
-        files: "assets/javascripts/**/*.js",
-        tasks: ["browserify"]
+        files: 'assets/javascripts/**/*.js',
+        tasks: ['browserify']
       },
       sass: {
-        files: "assets/stylesheets/**/*.scss",
-        tasks: ["sass"]
+        files: 'assets/stylesheets/**/*.scss',
+        tasks: ['sass']
       },
       nunjucks_render: {
-        files: "assets/views/*",
-        tasks: ["nunjucks_render"]
+        files: 'assets/views/*',
+        tasks: ['nunjucks_render']
       }
     },
 
@@ -52,11 +52,11 @@ module.exports = function (grunt) {
         }]
       },
       options: {
-        sourceMap: true,
-        outputStyle: 'expanded',
         includePaths: [
           './assets/styesheets/',
-        ]
+        ],
+        outputStyle: 'compressed',
+        sourceMap: true
       }
     },
 
@@ -101,19 +101,19 @@ module.exports = function (grunt) {
       default_options: {
         bsFiles: {
           src: [
-            "build/index.html",
-            "build/javascripts/**/*",
-            "build/stylesheets/**/*",
+            'build/index.html',
+            'build/javascripts/**/*',
+            'build/stylesheets/**/*',
           ]
         },
         options: {
-          browser: ["google chrome"],
+          browser: ['google chrome'],
           port: 3001,
           watchTask: true,
           server: {
             baseDir: [
-              "./build",
-              "./assets",
+              './build',
+              './assets',
             ],
           }
         }
@@ -146,8 +146,8 @@ module.exports = function (grunt) {
     symdiff: {
       core: {
         src: [
-          "build/stylesheets/*.css",
-          "build/html/*.html",
+          'build/stylesheets/*.css',
+          'build/views/*.html',
         ]
       },
       options: {
@@ -156,27 +156,27 @@ module.exports = function (grunt) {
       }
     },
 
+    // Run a local server
     serve: {
       options: {
         port: 9000,
         path: 'build'
       }
     }
-
   });
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
+  // Whenever the 'test' task is run, first clean the 'tmp' dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask("test", ["symdiff"]);
+  grunt.registerTask('test', ['symdiff']);
 
   // Used to set up your environment for the first time.
-  grunt.registerTask("setup", ["clean", "sass", "nunjucks_render", "browserify", "symlink"]);
+  grunt.registerTask('setup', ['clean', 'sass', 'nunjucks_render', 'browserify', 'symlink']);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
-  grunt.registerTask("server", ["setup", "serve"]);
+  grunt.registerTask('server', ['setup', 'serve']);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
-  grunt.registerTask("default", ["setup"]);
+  grunt.registerTask('default', ['setup']);
 };
