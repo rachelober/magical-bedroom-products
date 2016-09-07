@@ -1,0 +1,19 @@
+$colors: (
+  "aqua":       rgb(37, 126, 120),
+  "teal":       rgb( 64, 184, 175),
+  "fuchsia":    rgb(108, 45, 88),
+  "tapestry":   rgb(178, 87, 122),
+  "rajah":      rgb(246, 177, 127),
+  "white":      rgb(255, 255, 255),
+  "black":      rgb(0, 0, 0),
+);
+
+@function color($color) {
+  @if map-has-key($colors, $color) {
+    @return map-get($colors, $color);
+  }
+  @else {
+    @warn "Unknown color `#{$color}`";
+    @return null;
+  }
+}

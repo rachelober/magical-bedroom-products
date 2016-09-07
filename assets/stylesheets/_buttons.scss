@@ -1,0 +1,52 @@
+// Mixin for a regular button. The border, background color, text
+// color and hover state may be defined.
+//
+// Cutomizable options:
+//
+// $primary       - color value
+// $secondary     - color value
+// $hover         - color value or empty
+@mixin btn-color($primary, $secondary, $hover: mix($primary,
+color("white"), 80%)) {
+  background-color: $primary;
+  border-color: $primary;
+  color: $secondary;
+
+  &:hover {
+    background-color: $hover;
+    border-color: $hover;
+    color: $secondary;
+  }
+}
+
+%btn {
+  @include anim-hover-fade;
+
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+  display: inline-block;
+  height: 2rem;
+  line-height: 2rem;
+  margin: 0;
+  overflow: hidden;
+  padding: 0 1rem;
+  position: relative;
+  touch-callout: none;
+  vertical-align: middle;
+
+  &.is-disabled,
+  &[disabled] {
+    cursor: not-allowed !important;
+  }
+
+  + %button {
+    margin-left: 1rem;
+  }
+}
+
+
+.btn {
+  @include btn-color(color("fuchsia"), color("white"));
+  @extend %button;
+}

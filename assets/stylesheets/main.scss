@@ -1,68 +1,42 @@
 @import "normalize";
 @import "box-sizing";
 @import "hover-fade";
-
-// colors
-$colors: (
-  'aqua':       rgb(37, 126, 120),
-  'teal':       rgb( 64, 184, 175),
-  'fuchsia':    rgb(108, 45, 88),
-  'tapestry':   rgb(178, 87, 122),
-  'rajah':      rgb(246, 177, 127),
-  'white':      rgb(255, 255, 255),
-)
-
-// layout
+@import "colors";
+@import "buttons";
 
 body {
+  font-size: 16px;
 }
 
-h2 {
+
+
+// Nav
+.nav-primary {
 }
 
-p {
+.nav-list {
 }
 
-.btn {
-  @include anim-hover-fade;
-  background-color: #53c953;
-  border-color: #1e811e;
-  color: #1e811e;border-style: solid;
-  border-width: 2px;
-  cursor: pointer;
-  display: inline-block;
-  height: 32px;
-  line-height: 32px;
-  margin: 0;
-  overflow: hidden;
-  padding: 0 12px;
-  position: relative;
-  -webkit-touch-callout: none;
-  vertical-align: middle;
-
-  &.is-disabled,
-  &[disabled] {
-    background-color: #cce7cc;
-    border-color: #cce7cc;
-    color: #454f45;
-    cursor: not-allowed !important;
-  }
+.nav-item {
 }
 
-.content {
+// Product List
+
+.store {
   display: flex;
   justify-content: space-between;
-  padding: 12px 24px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .product-list {
-  padding: 18px;
-  width: 60%;
+  width: 100%;
 }
 
 .product {
-  border-top: 1px solid gray;
-  padding: 10px 50px;
+  background-color: color("tapestry");
+  display: inline-block;
+  width: 100%;
 }
 
 .product__name {
@@ -77,27 +51,21 @@ p {
 .product__buy {
 }
 
+// Cart
+
 .cart {
-  background-color: #8b7047;
-  border: 1px solid #000;
-  width: 30%;
+  width: 100%;
 }
 
 .cart__hed {
   font-weight: bold;
-  padding: 12px 20px;
   text-align: center;
   text-transform: uppercase;
 }
 
 .cart__count {
   display: inline-block;
-  border: 2px solid #000;
-  border-radius: 50%;
-  height: 25px;
-  padding: 2px;
   vertical-align: middle;
-  width: 25px;
 }
 
 .cart-items {
@@ -106,11 +74,8 @@ p {
 
 .item {
   align-items: stretch;
-  border-top: 1px solid #000;
   display: flex;
   justify-content: space-between;
-  line-height: 100px;
-  padding: 12px 20px;
 }
 
 .item__name {
@@ -130,9 +95,7 @@ p {
 }
 
 .cart__total {
-  border-top: 1px solid #000;
   font-weight: bold;
-  padding: 12px 20px;
   text-align: center;
   text-transform: uppercase;
 }
