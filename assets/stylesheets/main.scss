@@ -1,7 +1,18 @@
 @import "normalize";
 @import "box-sizing";
-@import "flexbox";
 @import "hover-fade";
+
+// colors
+$colors: (
+  'aqua':       rgb(37, 126, 120),
+  'teal':       rgb( 64, 184, 175),
+  'fuchsia':    rgb(108, 45, 88),
+  'tapestry':   rgb(178, 87, 122),
+  'rajah':      rgb(246, 177, 127),
+  'white':      rgb(255, 255, 255),
+)
+
+// layout
 
 body {
 }
@@ -39,8 +50,8 @@ p {
 }
 
 .content {
-  @include flexbox;
-  @include justify-content(space-between);
+  display: flex;
+  justify-content: space-between;
   padding: 12px 24px;
 }
 
@@ -94,10 +105,10 @@ p {
 }
 
 .item {
-  @include align-items(stretch);
-  @include flexbox;
-  @include justify-content(space-between);
+  align-items: stretch;
   border-top: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
   line-height: 100px;
   padding: 12px 20px;
 }

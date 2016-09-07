@@ -1,13 +1,5 @@
-@mixin box-sizing( $type: border-box ) {
-    -webkit-box-sizing: $type;
-       -moz-box-sizing: $type;
-         -o-box-sizing: $type;
-        -ms-box-sizing: $type;
-            box-sizing: $type;
-}
-
 *,
 *::before,
 *::after {
-  @include box-sizing(border-box);
+  box-sizing: border-box;
 }
