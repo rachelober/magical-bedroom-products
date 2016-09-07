@@ -11,7 +11,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-serve');
 
-  var symdiffCSS = require('symdiff-css'),
+  var symdiffCSS  = require('symdiff-css'),
       symdiffHTML = require('symdiff-html');
 
   grunt.initConfig({
@@ -109,7 +109,7 @@ module.exports = function (grunt) {
         },
         options: {
           browser: ['google chrome'],
-          port: 3001,
+          port: 4000,
           watchTask: true,
           server: {
             baseDir: [
