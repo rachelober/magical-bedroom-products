@@ -5,6 +5,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-symlink');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nunjucks-render');
+  grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-symdiff');
   grunt.loadNpmTasks('grunt-sass-lint');
   grunt.loadNpmTasks('grunt-sass');
@@ -120,6 +121,24 @@ module.exports = function (grunt) {
       }
     },
 
+    postcss: {
+      options: {
+        map: {
+            inline: false,
+            annotation: 'build/stylesheets/'
+        },
+
+        processors: [
+          require('pixrem')(),
+          require('autoprefixer')({browsers: 'last 2 versions'}),
+          require('cssnano')()
+        ]
+      },
+      dist: {
+        src: 'build/stylesheets/*.css'
+      }
+    },
+
     symlink: {
       options: {
         // Enable overwrite to delete symlinks before recreating them
@@ -159,24 +178,23 @@ module.exports = function (grunt) {
     // Run a local server
     serve: {
       options: {
-        port: 9000,
-        path: 'build'
+        path: 'build',
+        port: 9000
       }
     }
   });
 
   // Whenever the 'test' task is run, first clean the 'tmp' dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['symdiff']);
+  grunt.registerTask('test', ['clean', 'sasslint']);
 
   // Used to set up your environment for the first time.
-  grunt.registerTask('setup', ['clean', 'sass', 'nunjucks_render', 'browserify', 'symlink']);
+  grunt.registerTask('setup', ['clean', 'sass', 'postcss', 'nunjucks_render', 'browserify', 'symlink']);
 
-  // The default task will set up the evironment by compiling assets,
-  // setting up browserSync, and then watching files for changes.
+  // Set up the project and then serve the website from
+  // http://localhost:9000/index.html
   grunt.registerTask('server', ['setup', 'serve']);
 
   // The default task will set up the evironment by compiling assets,
   // setting up browserSync, and then watching files for changes.
-  grunt.registerTask('default', ['setup']);
-};
+  grunt.registerTask('default', ['setup', 'browserSync', 'watch']);};
