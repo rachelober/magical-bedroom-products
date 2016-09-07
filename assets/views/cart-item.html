@@ -1,13 +1,19 @@
-<div class='item' id="cart-item-{{ id }}">
-  <div class='item__name'>
-    {{ name }}
-  </div>
-  <div class='item__price'>
-    {{ price }}
-  </div>
-  <div class='item__remove' id='item__remove' data-id='{{ id }}'>
-    <div class='btn'>
-      x
+<div class="cart-item" id="cart-item-{{ id }}">
+
+  <div class="item">
+
+    <h3 class="item__name">
+      {{ name }}
+    </h3>
+
+    <div class="item__price">
+      {{ price }}
     </div>
+
   </div>
+
+  <button class="btn--remove" data-id="{{ id }}" type="button">
+    Remove
+  </button
+
 </div>

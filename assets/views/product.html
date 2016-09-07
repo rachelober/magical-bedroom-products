@@ -1,13 +1,18 @@
-<div class='product'>
-  <h2 class='product__name' itemprop='name'>
+<section class="product">
+
+  <h2 class="product__name">
     {{ product.name }}
   </h2>
-  <p class='product__dek' itemprop='description'>
+
+  <img alt="{{ product.name }}" class="product__image" src="exampl.gif">
+
+  <p class="product__dek">
     {{ product.description }}
   </p>
-  <div class='product__buy' data-name='{{ product.name }}' data-price='{{ product.price }}'>
-    <div class='btn'>
-      Buy
-    </div>
-  </div>
-</div>
+
+  <button class="btn" data-name="{{ product.name }}" data-price="{{
+    product.price }}" type="button">
+    Add To Cart
+  </button>
+
+</section>

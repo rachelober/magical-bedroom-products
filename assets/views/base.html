@@ -1,42 +1,88 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
-    <meta content='ie=edge' http-equiv='x-ua-compatible'>
-    <title>Magical Bedroom Projects</title>
-    <meta content='' name='description'>
-    <meta content='width=device-width, initial-scale=1' name='viewport'>
-    <link href='stylesheets/main.css' rel='stylesheet'>
+    <link href="stylesheets/main.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="Selling Magical Bedroom Products Since 2016" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Magical Bedroom ProDects</title>
   </head>
+
   <body>
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class='content'>
 
-      <div class='product-list'>
+    <header class="header">
+      <h1 class="site-title">
+        Magical Bedroom Products for Sale
+      </h1>
+    </header>
+
+    <nav class="nav-primary">
+      <ul class="nav-list">
+        <li>
+          <a class="nav-item" href="http://example.com">
+            About Us
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" href="http://example.com">
+            Shop
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" href="http://example.com">
+            Checkout
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="store">
+
+      <section class="product-list" data-id="product-list" id="product-list">
 
         {% asyncEach product in products %}
           {% include "assets/views/product.html" %}
         {% endeach %}
 
-      </div>
+      </section>
 
-      <div class='cart'>
-        <div class='cart__hed'>
+    </main>
+
+    <form action="" class="cart" id="cart">
+
+      <header class="cart-header">
+        <span class="">
           Cart
-          <span class='cart__count' data-id='cart-count' id='cart-count'></span>
-        </div>
-        <div class='cart-items' id='cart-items'>
+        </span>
+        <span class="cart-count" data-id="cart-count" id="cart-count">
+        </span>
+      </header>
 
-        </div>
-        <div class='cart__total'>
-          Total <span data-id='cart-total' id='cart-total'>{{ cart_total }}</span>
-        </div>
-      </div>
-    </div>
-    <script src='javascripts/main.js'></script>
-    <script src='javascripts/nunjucks.min.js'></script>
+      <section class="cart-items" data-id="cart-items" id="cart-items">
+      </section>
+
+
+      <footer class="cart__total">
+        <span class="">
+          Total:
+        </span>
+        <span class="" data-id="cart-total" id="cart-total">
+          {{ cart_total }}
+        </span>
+      </footer>
+
+    </form>
+
+    <footer class="">
+      Copyright &copy; 2016
+    </footer>
+
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/nunjucks.min.js"></script>
   </body>
 </html>
 
